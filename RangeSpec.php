@@ -64,6 +64,23 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     $this->assertEquals("1,2,3,4,5", getOpenMembers("1","5"));
   }
 
+  function testOpenGetMemberOneToTwo(){
+    $this->assertEquals("1,2", getOpenMembers("1","2"));
+  }
+
+  function testOpenGetMemberOneToOne(){
+    $this->assertEquals("1", getOpenMembers("1","1"));
+  }
+
+   function testOpenGetMemberTwoToOne(){
+      try {
+        $this->assertEquals("1", getOpenMembers("2","1"));
+        $this->fail("Invalid range was not thrown");
+      } catch (Exception $e) {
+      $this->assertTrue(true);
+    }
+  }
+
   function testAlwaysfail(){
     //$this->assertTrue(fail);
   }

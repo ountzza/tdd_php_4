@@ -12,7 +12,7 @@ function getCloseMembers($firstRange, $lastRange){
 }
 function getOpenMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
-    return "";
+    return $firstRange;
   }
   for($i=$firstRange; $i<= $lastRange; $i++){
     $result[] = $i;
@@ -22,11 +22,8 @@ function getOpenMembers($firstRange, $lastRange){
 }
 
 function calRange($range) {
-
   $membersRange = substr($range,1,3);
   $member = explode(',',$membersRange);
-
-  $setMembers = getCloseMembers($member[0],$member[1]);
 
   $firstSign = $range[0];
   $lastSign = $range[4];
@@ -34,6 +31,8 @@ function calRange($range) {
   $signs = $firstSign . $lastSign;
   $lastFive = "," . $member[1];
   $firstZero = $member[0] . ",";
+
+  $setMembers = getCloseMembers($member[0],$member[1]);
 
   if($member[0] == $member[1]) {
     $lastFive = "";
