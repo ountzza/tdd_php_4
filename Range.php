@@ -4,16 +4,18 @@ function getOpenMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
     return "";
   }
-  for($i=$firstRange+1; $i< $lastRange; $i++){
-    $result[] = $i;
-  }
-  return $result = implode($result,',');
+  return getMembersLoop($firstRange+1, $lastRange);
 }
+
 function getCloseMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
     return $firstRange;
   }
-  for($i=$firstRange; $i<= $lastRange; $i++){
+  return getMembersLoop($firstRange, $lastRange+1);
+}
+
+function getMembersLoop($firstRange, $lastRange){
+  for($i=$firstRange; $i< $lastRange; $i++){
     $result[] = $i;
   }
   return $result = implode($result,',');
