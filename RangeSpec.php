@@ -18,5 +18,7 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
   function testOpenOpenRangeZeroToFive () {
     $this->assertEquals("{1,2,3,4}", rangeZeroToFive("(0,5)"));
   }
-
+  function testOpenOpenRangeZeroToZero () {
+    $this->assertEquals("{}", rangeZeroToFive("(0,0)"));
+  }
 }

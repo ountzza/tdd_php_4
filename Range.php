@@ -1,25 +1,29 @@
 <?php
 
 function rangeZeroToFive($range) {
-
-  $firstPosition = 0;
-  $lastPosition = 4;
-  $firstSign = $range[$firstPosition];
-  $lastSign = $range[$lastPosition];
+ 
+  $setMembers = "1,2,3,4";
+  $membersRange = substr($range,1,3);
+  $firstSign = $range[0];
+  $lastSign = $range[4];
 
   $signs = $firstSign . $lastSign;
 
   if ($signs == "()") {
-    return "{1,2,3,4}";
+    if($membersRange == "0,0") {
+      $setMembers = "";
+    }
 
-  } else if($firstSign == "(")  {
-    return "{1,2,3,4,5}";
+  } else if($signs == "(]")  {
+    $setMembers = $setMembers . ",5";
 
-  } else if($lastSign == ")") {
-    return "{0,1,2,3,4}";
+  } else if($signs == "[)") {
+    $setMembers = "0," . $setMembers;
 
+  } else if($signs == "[]"){
+    $setMembers = "0," . $setMembers . ",5";
+  
   }
 
-  return "{0,1,2,3,4,5}";
-
+  return "{" . $setMembers . "}";
 }
