@@ -7,7 +7,7 @@ function getCloseMembers($firstRange, $lastRange){
   $result = implode($result,',');
   return $result;
 }
-function rangeZeroToFive($range) {
+function calRange($range) {
 
   $setMembers = "1,2,3,4";
 
