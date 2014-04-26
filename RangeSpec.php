@@ -40,4 +40,19 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
   function testCloseCloseRangeTwoToTwo() {
     $this->assertEquals("{2}", calRange("[2,2]"));
   }
+
+  function testOpenOpenRangeTwoToTwo() {
+    $this->assertEquals("{}", calRange("(2,2)"));
+  }
+
+  function testOpenCloseRangeTwoToTwo(){
+    try {
+      $this->assertEquals("invalid", calRange("(2,2]"));
+      $this->fail("Invalid range was not thrown");
+    } catch (Exception $e) {
+      $this->assertTrue(true);
+    }
+  }
+
+
 }

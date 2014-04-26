@@ -28,13 +28,17 @@ function calRange($range) {
   if($member[0] == $member[1]) {
     $lastFive = "";
     $firstZero = "";
-    $setMembers = $member[0];
+  
+    if($signs == "[]") {
+        $setMembers = $member[0];
+    } else if ($signs == "()") {
+        $setMembers = "";
+    } else if($signs == "(]"){
+        throw new Exception("invalid");
+    }
   }
 
-  if($membersRange == "0,0") {
-      $setMembers = "";
-
-  }else if($signs == "(]")  {
+  if($signs == "(]")  {
     $setMembers = $setMembers . $lastFive;
 
   } else if($signs == "[)") {
