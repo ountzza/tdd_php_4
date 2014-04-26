@@ -24,13 +24,20 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
   function testCloseCloseRangeOneToOne () {
     $this->assertEquals("{1}", calRange("[1,1]"));
   }
-//  function testOpenOpenRangeZeroToFour () {
-//    $this->assertEquals("{1,2,3}", calRange("(0,4)"));
-//  }
+  function testOpenOpenRangeZeroToFour () {
+    $this->assertEquals("{1,2,3}", calRange("(0,4)"));
+  }
   function testCloseGetMember () {
     $this->assertEquals("1,2,3", getCloseMembers("0","4"));
   }
   function testCloseGetMemberSixToTen () {
     $this->assertEquals("7,8,9", getCloseMembers("6","10"));
+  }
+  function testCloseGetMemberOneToOne (){
+    $this->assertEquals("", getCloseMembers("1","1"));
+  }
+
+  function testCloseCloseRangeTwoToTwo() {
+    $this->assertEquals("{2}", calRange("[2,2]"));
   }
 }
