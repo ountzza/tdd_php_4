@@ -47,7 +47,7 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
       $this->assertTrue(true);
     }
   }
-  
+
   function testCloseGetMember () {
     $this->assertEquals("1,2,3", getCloseMembers("0","4"));
   }
@@ -60,7 +60,9 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     $this->assertEquals("", getCloseMembers("1","1"));
   }
   
-
+  function testOpenGetMemberOneToFive(){
+    $this->assertEquals("1,2,3,4,5", getOpenMembers("1","5"));
+  }
 
   function testAlwaysfail(){
     //$this->assertTrue(fail);

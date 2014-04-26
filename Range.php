@@ -10,6 +10,9 @@ function getCloseMembers($firstRange, $lastRange){
   $result = implode($result,',');
   return $result;
 }
+function getOpenMembers($firstRange, $lastRange){
+  return "1,2,3,4,5";
+}
 
 function calRange($range) {
 
