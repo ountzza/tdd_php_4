@@ -11,7 +11,14 @@ function getCloseMembers($firstRange, $lastRange){
   return $result;
 }
 function getOpenMembers($firstRange, $lastRange){
-  return "1,2,3,4,5";
+  if($firstRange==$lastRange){
+    return "";
+  }
+  for($i=$firstRange; $i<= $lastRange; $i++){
+    $result[] = $i;
+  }
+  $result = implode($result,',');
+  return $result;
 }
 
 function calRange($range) {
