@@ -31,15 +31,15 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     $this->assertEquals("{1,2,3}", calRange("(0,4)"));
   }
 
-  function testCloseCloseRangeTwoToTwo() {
+  function testCloseCloseRangeTwoToTwo () {
     $this->assertEquals("{2}", calRange("[2,2]"));
   }
 
-  function testOpenOpenRangeTwoToTwo() {
+  function testOpenOpenRangeTwoToTwo () {
     $this->assertEquals("{}", calRange("(2,2)"));
   }
 
-  function testOpenCloseRangeTwoToTwo(){
+  function testOpenCloseRangeTwoToTwo () {
     try {
       $this->assertEquals("invalid", calRange("(2,2]"));
       $this->fail("Invalid range was not thrown");
@@ -48,7 +48,7 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     }
   }
 
-  function testCloseGetMember () {
+  function testCloseGetMemberZeroToFour () {
     $this->assertEquals("1,2,3", getCloseMembers("0","4"));
   }
 
@@ -56,23 +56,36 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     $this->assertEquals("7,8,9", getCloseMembers("6","10"));
   }
 
-  function testCloseGetMemberOneToOne (){
+  function testCloseGetMemberOneToOne () {
     $this->assertEquals("", getCloseMembers("1","1"));
   }
+
+  function testCloseGetMemberOneToFive() {
+    $this->assertEquals("2,3,4", getCloseMembers("1","5"));
+  }
+
+  function testCloseGetMemberTwoToOne () {
+      try {
+        $this->assertEquals("1", getCloseMembers("2","1"));
+        $this->fail("Invalid range was not thrown");
+      } catch (Exception $e) {
+      $this->assertTrue(true);
+    }
+  }
   
-  function testOpenGetMemberOneToFive(){
+  function testOpenGetMemberOneToFive () {
     $this->assertEquals("1,2,3,4,5", getOpenMembers("1","5"));
   }
 
-  function testOpenGetMemberOneToTwo(){
+  function testOpenGetMemberOneToTwo () {
     $this->assertEquals("1,2", getOpenMembers("1","2"));
   }
 
-  function testOpenGetMemberOneToOne(){
+  function testOpenGetMemberOneToOne () {
     $this->assertEquals("1", getOpenMembers("1","1"));
   }
 
-   function testOpenGetMemberTwoToOne(){
+   function testOpenGetMemberTwoToOne() {
       try {
         $this->assertEquals("1", getOpenMembers("2","1"));
         $this->fail("Invalid range was not thrown");
@@ -81,7 +94,7 @@ class RangeSpec extends PHPUnit_Framework_TestCase {
     }
   }
 
-  function testAlwaysfail(){
+  function testAlwaysfail () {
     //$this->assertTrue(fail);
   }
 

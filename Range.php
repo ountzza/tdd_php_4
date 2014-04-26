@@ -7,8 +7,7 @@ function getCloseMembers($firstRange, $lastRange){
   for($i=$firstRange+1; $i< $lastRange; $i++){
     $result[] = $i;
   }
-  $result = implode($result,',');
-  return $result;
+  return $result = implode($result,',');
 }
 function getOpenMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
@@ -17,8 +16,7 @@ function getOpenMembers($firstRange, $lastRange){
   for($i=$firstRange; $i<= $lastRange; $i++){
     $result[] = $i;
   }
-  $result = implode($result,',');
-  return $result;
+  return $result = implode($result,',');
 }
 
 function calRange($range) {
