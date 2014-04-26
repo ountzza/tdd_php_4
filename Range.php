@@ -1,6 +1,6 @@
 <?php
 
-function getCloseMembers($firstRange, $lastRange){
+function getOpenMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
     return "";
   }
@@ -9,7 +9,7 @@ function getCloseMembers($firstRange, $lastRange){
   }
   return $result = implode($result,',');
 }
-function getOpenMembers($firstRange, $lastRange){
+function getCloseMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
     return $firstRange;
   }
@@ -30,7 +30,7 @@ function calRange($range) {
   $lastFive = "," . $member[1];
   $firstZero = $member[0] . ",";
 
-  $setMembers = getCloseMembers($member[0],$member[1]);
+  $setMembers = getOpenMembers($member[0],$member[1]);
 
   if($member[0] == $member[1]) {
     $lastFive = "";
