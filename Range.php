@@ -1,27 +1,37 @@
 <?php
 
-function getCloseMembers($firstRange, $lastRange){
+function getOpenMembers($firstRange, $lastRange){
   if($firstRange==$lastRange){
     return "";
   }
-  for($i=$firstRange+1; $i< $lastRange; $i++){
+  return getMembersLoop($firstRange+1, $lastRange);
+}
+
+function getCloseMembers($firstRange, $lastRange){
+  if($firstRange==$lastRange){
+    return $firstRange;
+  }
+  return getMembersLoop($firstRange, $lastRange+1);
+}
+
+function getMembersLoop($firstRange, $lastRange){
+  for($i=$firstRange; $i< $lastRange; $i++){
     $result[] = $i;
   }
-  $result = implode($result,',');
-  return $result;
+  return $result = implode($result,',');
+}
+
+function explodeMemberRange($range){
+  $membersRange = substr($range,1,3);
+  return explode(',',$membersRange);
 }
 
 function calRange($range) {
 
-  $membersRange = substr($range,1,3);
-  $member = explode(',',$membersRange);
+  $member = explodeMemberRange($range);
+  $setMembers = getOpenMembers($member[0],$member[1]);
 
-  $setMembers = getCloseMembers($member[0],$member[1]);
-
-  $firstSign = $range[0];
-  $lastSign = $range[4];
-
-  $signs = $firstSign . $lastSign;
+  $signs = $range[0] . $range[4];
   $lastFive = "," . $member[1];
   $firstZero = $member[0] . ",";
 
