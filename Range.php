@@ -21,18 +21,19 @@ function getMembersLoop($firstRange, $lastRange){
   return $result = implode($result,',');
 }
 
-function calRange($range) {
+function explodeMemberRange($range){
   $membersRange = substr($range,1,3);
-  $member = explode(',',$membersRange);
+  return explode(',',$membersRange);
+}
 
-  $firstSign = $range[0];
-  $lastSign = $range[4];
+function calRange($range) {
 
-  $signs = $firstSign . $lastSign;
+  $member = explodeMemberRange($range);
+  $setMembers = getOpenMembers($member[0],$member[1]);
+
+  $signs = $range[0] . $range[4];
   $lastFive = "," . $member[1];
   $firstZero = $member[0] . ",";
-
-  $setMembers = getOpenMembers($member[0],$member[1]);
 
   if($member[0] == $member[1]) {
     $lastFive = "";
